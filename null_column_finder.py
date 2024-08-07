@@ -10,7 +10,7 @@ class ColumnNaNChecker:
     def check_columns_with_nan(self):
         try:
             # Read the CSV file into a pandas DataFrame
-            df = pd.read_csv(self.filename, delimiter=self.delimiter, encoding=self.encoding)
+            df = pd.read_csv(self.filename, delimiter=self.delimiter, encoding=self.encoding, keep_default_na=False, na_values=['NULL', 'NaN', ''])
 
             # Check for NaN values in each column
             columns_with_nan = df.columns[df.isna().any()].tolist()

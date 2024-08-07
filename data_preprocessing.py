@@ -8,7 +8,7 @@ class DataProc:
 
     def change_format_to_ddmmyy(self, columns):
         try:
-            df = pd.read_csv(self.filename, delimiter=self.delimiter, encoding=self.encoding)
+            df = pd.read_csv(self.filename, delimiter=self.delimiter, encoding=self.encoding, keep_default_na=False, na_values=['NULL', 'NaN', ''])
 
             for column in columns:
                 df[column] = df[column].apply(
